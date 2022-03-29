@@ -3,102 +3,9 @@ from Crypto.Cipher import DES
 from Crypto.Hash import SHA256
 from getpass import getpass
 from Crypto.Protocol.KDF import PBKDF2
-# import tkinter module
-from tkinter import *
 
-# import other necessery modules
-import random
-
-# Vigenère cipher for encryption and decryption
-import base64
-
-# creating root object
-root = Tk()
-
-# defining size of window
-root.geometry("1200x6000")
-
-# setting up the title of window
-root.title("Message Encryption and Decryption")
-
-Tops = Frame(root, width=1600, relief=SUNKEN)
-Tops.pack(side=TOP)
-
-f1 = Frame(root, width=800, relief=SUNKEN)
-f1.pack(side=LEFT)
-
-# ==============================================
-
-
-lblInfo = Label(Tops, font=('Times New Roman', 50, 'bold'),
-                text="Text Encryption and Decryption",
-                fg="Black", bd=10, anchor='w')
-
-lblInfo.grid(row=0, column=0)
-
-
-# Initializing variables
-Msg = StringVar()
-key = StringVar()
-mode = StringVar()
-Result = StringVar()
-
-
-# labels for the message
-lblMsg = Label(f1, font=('Times New Roman', 16, 'bold'),
-               text="MESSAGE", bd=16, anchor="w")
-
-lblMsg.grid(row=1, column=0)
-# Entry box for the message
-txtMsg = Entry(f1, font=('Times New Roman', 16, 'bold'),
-               textvariable=Msg, bd=10, insertwidth=4,
-               bg="powder blue", justify='right')
-
-
-txtMsg.grid(row=1, column=1)
-# labels for the key
-lblkey = Label(f1, font=('Times New Roman', 16, 'bold'),
-               text="KEY (Only Integer)", bd=16, anchor="w")
-
-lblkey.grid(row=2, column=0)
-
-
-# Entry box for the key
-txtkey = Entry(f1, font=('Times New Roman', 16, 'bold'),
-               textvariable=key, bd=10, insertwidth=4,
-               bg="powder blue", justify='right')
-
-txtkey.grid(row=2, column=1)
-
-# labels for the mode
-lblmode = Label(f1, font=('Times New Roman', 16, 'bold'),
-                text="MODE(e for encrypt, d for decrypt)",
-                bd=16, anchor="w")
-
-lblmode.grid(row=3, column=0)
-# Entry box for the mode
-txtmode = Entry(f1, font=('Times New Roman', 16, 'bold'),
-                textvariable=mode, bd=10, insertwidth=4,
-                bg="powder blue", justify='right')
-
-txtmode.grid(row=3, column=1)
-
-# labels for the result
-lblResult = Label(f1, font=('Times New Roman', 16, 'bold'),
-                  text="The Result-", bd=16, anchor="w")
-
-lblResult.grid(row=2, column=2)
-
-# Entry box for the result
-txtResult = Entry(f1, font=('Times New Roman', 16, 'bold'),
-                  textvariable=Result, bd=10, insertwidth=4,
-                  bg="powder blue", justify='right')
-
-txtResult.grid(row=2, column=3)
 
 # encrypting function
-
-
 def encryptor(path):
     # opening the image file
     try:
@@ -248,7 +155,7 @@ def decryptor(encrypted_image_path):
 
 
 # Documentations
-print("--------------------------------------------------------------------------------------------------------------------------------------")
+""" print("--------------------------------------------------------------------------------------------------------------------------------------")
 print("-------------------------------------------------IMAGE ENCRYPTOR DECRYPTOR TOOL triple-DES-------------------------------------------")
 print("")
 print("")
@@ -267,7 +174,7 @@ print("		        encrypted_originalname.originalformat and decrypted_originalnam
 print("		        In some cases, file format error during decryption may occur if image was not encrypted using this program.")
 print("		        The encrypted file is saved in same format as original.")
 print("")
-print("")
+print("") """
 
 
 # --------------------------------------MAIN PROGRAM-----------------------------------------------
@@ -292,59 +199,7 @@ else:
     encrypted_image_path = input("		Enter file name to decrypted:")
     decryptor(encrypted_image_path)
 
-""" print("")
+print("")
 print("")
 print("-------------------------------------------------------------------------------------------------------------------------------------")
 print("--------------------------------------------------------------------------------------------------------------------------------------")
- """
-
-
-def Results():
-    # print("Message= ", (Msg.get()))
-
-    msg = Msg.get()
-    k = key.get()
-    m = mode.get()
-
-    if (m == 'e'):
-        Result.set(encryptor(k, msg))
-    else:
-        Result.set(decryptor(k, msg))
-
-# exit function
-
-
-def qExit():
-    root.destroy()
-
-# Function to reset the window
-
-
-def Reset():
-
-    Msg.set("")
-    key.set("")
-    mode.set("")
-    Result.set("")
-
-
-# Show message button
-btnTotal = Button(f1, padx=16, pady=8, bd=16, fg="black",
-                  font=('Times New Roman', 16, 'bold'), width=10,
-                  text="Show Message", bg="powder blue",
-                  command=Results).grid(row=7, column=1)
-
-# Reset button
-btnReset = Button(f1, padx=16, pady=8, bd=16,
-                  fg="black", font=('Times New Roman', 16, 'bold'),
-                  width=10, text="Reset", bg="green",
-                  command=Reset).grid(row=7, column=2)
-
-# Exit button
-btnExit = Button(f1, padx=16, pady=8, bd=16,
-                 fg="black", font=('Times New Roman', 16, 'bold'),
-                 width=10, text="Exit", bg="red",
-                 command=qExit).grid(row=7, column=3)
-
-# keeps window alive
-root.mainloop()
